@@ -13,3 +13,11 @@ after_success:
   - docker build -t sakshibajaj/multi-nginx ./nginx
   - docker build -t sakshibajaj/multi-server ./server
   - docker build -t sakshibajaj/multi-worker ./worker
+
+  # login to docker
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # Take those images and push it to docker hub
+  - docker push sakshibajaj/multi-client
+  - docker push sakshibajaj/multi-nginx
+  - docker push sakshibajaj/multi-server
+  - docker push sakshibajaj/multi-worker
