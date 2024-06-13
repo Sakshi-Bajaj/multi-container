@@ -9,15 +9,16 @@ script:
   - docker run -e CI=true sakshibajaj/react-test npm test
 
 after_success:
-  - docker build -t sakshibajaj/multi-client ./client
-  - docker build -t sakshibajaj/multi-nginx ./nginx
-  - docker build -t sakshibajaj/multi-server ./server
-  - docker build -t sakshibajaj/multi-worker ./worker
+  - docker build -t bajajsakshi/multi-client ./client
+  - docker build -t bajajsakshi/multi-nginx ./nginx
+  - docker build -t bajajsakshi/multi-server ./server
+  - docker build -t bajajsakshi/multi-worker ./worker
 
   # login to docker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+
   # Take those images and push it to docker hub
-  - docker push sakshibajaj/multi-client
-  - docker push sakshibajaj/multi-nginx
-  - docker push sakshibajaj/multi-server
-  - docker push sakshibajaj/multi-worker
+  - docker push bajajsakshi/multi-client
+  - docker push bajajsakshi/multi-nginx
+  - docker push bajajsakshi/multi-server
+  - docker push bajajsakshi/multi-worker
