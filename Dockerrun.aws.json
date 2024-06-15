@@ -1,10 +1,11 @@
 {
-    "AWSEBDockerrunVersion": 1,
+    "AWSEBDockerrunVersion": 2,
     "containerDefinitions": [
         {   
             "name": "client",
             "image": "bajajsakshi/multi-client",
             "hostname": "client",
+            "memory": 128,
             "essential": false
         },
         {
@@ -12,6 +13,7 @@
             "image": "bajajsakshi/multi-nginx",
             "hostname": "nginx",
             "essential": true,
+            "memory": 128,
             "portMappings": [
                 {
                     "hostPort": 80,
@@ -24,12 +26,14 @@
             "name": "server",
             "image": "bajajsakshi/multi-server",
             "hostname": "api",
+            "memory": 128,
             "essential": false
         },
         {
             "name": "worker",
             "image": "bajajsakshi/multi-worker",
             "hostname": "worker",
+            "memory": 128,
             "essential": false
         }
     ]
